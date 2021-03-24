@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-module.exports = class Campaign_File extends Sequelize.Model {
+module.exports = class Comment_File extends Sequelize.Model {
     static init(sequelize) {
         return super.init({
             id: {
@@ -17,17 +17,20 @@ module.exports = class Campaign_File extends Sequelize.Model {
                 type: Sequelize.STRING(40),
                 allowNull: false
             },
-            campaign_id: {
+            comment_tbl_id: {
                 type: Sequelize.INTEGER,
                 allowNull: false
+            },
+            comment_id: {
+                type: Sequelize.BIGINT
             }
         }, {
             sequelize,
             timestamps: false,
-            tableName: "campaign_file_tbl",
-            modelName: "Campaign_File",
+            modelName: "Comment_File",
+            tableName: "comment_file_tbl",
             charset: "utf8",
             collate: "utf8_general_ci"
-        })
+        });
     }
-}
+}  

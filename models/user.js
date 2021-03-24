@@ -17,9 +17,16 @@ module.exports = class User extends Sequelize.Model {
                 allowNull: false
             },
             region: {
-                type: Sequelize.ENUM,
+                type: Sequelize.ENUM('KANGWON', 'KYEOGKI', 'SOUTHCHUNG', 'NORTHCHUNG', 'SOUTHKYEONG', 'NORTHKYEONG', 'NORTHJEONRA', 'SOUTHJEONRA'),
                 allowNull: false
             }
+        }, {
+            sequelize,
+            timestamps: false,
+            modelName: "User",
+            tableName: "user_tbl",
+            charset: "utf8",
+            collate: "utf8_general_ci"
         })
     }
 }
