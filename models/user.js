@@ -5,7 +5,8 @@ module.exports = class Domain extends Sequelize.Model {
         return super.init({
             id: {
                 type: Sequelize.STRING(20),
-                allowNull: false
+                allowNull: false,
+                primaryKey: true
             },
             name: {
                 type: Sequelize.STRING(10),

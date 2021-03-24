@@ -4,9 +4,10 @@ module.exports = class Domain extends Sequelize.Model {
     static init(sequelize) {
         return super.init({
             code: {
-                type: Sequelize.INTEGER,
+                type: Sequelize.STRING(100),
                 allowNull: false,
-                defaultValue: process.env.CODE
+                defaultValue: process.env.CODE,
+                primaryKey: true
             },
         }, {
             sequelize,
