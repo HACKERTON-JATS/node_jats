@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-module.exports = class Domain extends Sequelize.Model {
+module.exports = class User extends Sequelize.Model {
     static init(sequelize) {
         return super.init({
             id: {

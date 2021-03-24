@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-module.exports = class Domain extends Sequelize.Model {
+module.exports = class Campaign extends Sequelize.Model {
     static init(sequelize) {
         return super.init({
             id: {
@@ -32,6 +32,7 @@ module.exports = class Domain extends Sequelize.Model {
             created_at: {
                 type: Sequelize.DATETIME,
                 allowNull: false,
+                defaultValue: Sequelize.NOW
             },
             like_cnt: {
                 type: Sequelize.INTEGER,
@@ -42,7 +43,12 @@ module.exports = class Domain extends Sequelize.Model {
                 allowNull: false
             }
         }, {
-            sequelize
-        })
+            sequelize,
+            timestamps: false,
+            tableName:"campaign_tbl",
+            modelName: "Campaign",
+            charset: "utf8",
+            collate: "utf8_general_ci"
+        });
     }
 }
