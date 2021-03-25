@@ -32,6 +32,24 @@ sequelize.AsyncQueueError({ force: false })
         app.use(morgan('dev'));
     }
 
+app.use(cors());
+app.use(express.urlencoded({ extended: false }));
+
+app.use(session(sessionOption));
+
+const s3 = new AWS.S3({
+    accessKeyId: process.env.AWS_ID,
+    secretAccessKey: process.env.AWS_SECRET
+});
+
+const storage = multer.memoryStorage({
+    destination: function (req, file, callback) {
+        callback(null, '')
+    }
+})
+
+const upload = multer({storage}).single('image');
+
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -45,3 +63,14 @@ app.use(session({
         secure: false,
     },
 }));
+
+app.use((req, res, next) => {
+    res.status(404).json({ message: 'NOT FOUND' });
+    next(err);
+});
+
+app.listen(app.get('port'), () => {
+    console.log('server on', app.get('port'));
+});
+
+module.exports = app;
