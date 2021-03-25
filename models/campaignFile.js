@@ -28,6 +28,10 @@ module.exports = class Campaign_File extends Sequelize.Model {
             modelName: "Campaign_File",
             charset: "utf8",
             collate: "utf8_general_ci"
-        })
+        });
+    }
+
+    static associate(db) {
+        db.Campaign_File.belongsTo(db.Campaign, { foreignKey: "campaign_id", targetKet: "id"})
     }
 }

@@ -51,4 +51,10 @@ module.exports = class Campaign extends Sequelize.Model {
             collate: "utf8_general_ci"
         });
     }
+
+    static associate(db) {
+        db.Campaign.hasMany(db.Campaign_File, { foreignKey: "campaign_id", sourceKey: "id"});
+        db.Campaign.hasMany(db.Comment, { foreignKey: "campaign_id", sourceKey: "id"});
+        db.Campaign.belongsTo(db.User, { foreignKey: "writer", targetKey: "id"});
+    }
 }

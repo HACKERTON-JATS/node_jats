@@ -27,6 +27,11 @@ module.exports = class User extends Sequelize.Model {
             tableName: "user_tbl",
             charset: "utf8",
             collate: "utf8_general_ci"
-        })
+        });
+    }
+
+    static associate(db) {
+        db.User.hasMany(db.Campaign_File, { foreignKey: "writer", sourceKey: "id"});
+        db.User.hasMany(db.Comment, { foreignKey: "user_id", sourceKey: "id"});
     }
 }

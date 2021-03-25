@@ -33,4 +33,8 @@ module.exports = class Comment_File extends Sequelize.Model {
             collate: "utf8_general_ci"
         });
     }
+
+    static associate(db) {
+        db.Comment_File.belongsTo(db.Comment_File, { foreignKey: "comment_tbl_id", targetKey: "id"});
+    }
 }  
