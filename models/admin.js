@@ -15,6 +15,8 @@ module.exports = class Admin extends Sequelize.Model {
             paranoid: false,
             modelName: 'Admin',
             tableName: 'admin_tbl',
+            charset: 'utf8',
+            collate: "utf8_general_ci"
         });
     }
 }
