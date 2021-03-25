@@ -32,6 +32,6 @@ module.exports = class Campaign_File extends Sequelize.Model {
     }
 
     static associate(db) {
-        db.Campaign_File.belongsTo(db.Campaign, { foreignKey: "campaign_id", targetKet: "id"})
+        db.Campaign_File.belongsTo(db.Campaign, { foreignKey: "campaign_id", targetKet: "id"});
     }
 }
