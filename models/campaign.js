@@ -23,7 +23,8 @@ module.exports = class Campaign extends Sequelize.Model {
             },
             is_accepted: {
                 type: Sequelize.TINYINT,
-                allowNull: false
+                allowNull: false,
+                defaultValue: 0
             },
             user_id: {
                 type: Sequelize.STRING(20),
