@@ -10,7 +10,7 @@ const login = async(req, res) => {
         });
         if(!compare) {
             return res.status(401).json({
-                code: 401,
+                code: 400,
                 message: "코드가 일치하지 않습니다",
             });
         }
@@ -21,7 +21,7 @@ const login = async(req, res) => {
             issuer: "JATS",
         });
         res.json({
-            code: 200,
+            code: 201,
             message: "토큰이 발급되었습니다",
             authorization: token
         });
@@ -32,7 +32,7 @@ const login = async(req, res) => {
 };
 
 const logout = function(req, res) {
-    res.status(200);
+    res.status(204);
     res.end();
 };
 
