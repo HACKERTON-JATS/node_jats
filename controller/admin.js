@@ -30,4 +30,42 @@ const viewCampaignDetail = async(req, res) => {
         console.error(error);
         return error;
     }
-}
+};
+
+const isAccepted = async(req, res) => {
+    try {
+        await Campaign.update({
+            is_accepted: req.body.is_accepted
+        }, {
+            where: { id: req.params.id },
+        });
+        res.json({
+            message: 'success'
+        });
+        res.status(200);
+        res.end();
+    } catch(error) {
+        console.error(error);
+        return error;
+    }
+};
+
+const isRejected = async(req, res) => {
+    try {
+        await Campaign.destroy({
+            where: { id: req.params.id }
+        });
+        res.status(200);
+        res.end();
+    } catch(error) {
+        console.error(error);
+        return error;
+    }
+};
+
+module.exports = {
+    viewCampaign,
+    viewCampaignDetail,
+    isAccepted,
+    isRejected
+};
