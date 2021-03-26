@@ -15,6 +15,8 @@ dotenv.config();
 
 const campaignFile = require('./routes/campaignFile');
 const commentFile = require('./routes/commentFile');
+const adminRouter = require('./routes/admin');
+const authRouter = require('./routes/auth');
 
 const app = express();
 
@@ -63,6 +65,9 @@ app.use(session({
         secure: false,
     },
 }));
+
+app.use('/admin', adminRouter);
+app.use('/', authRouter);
 
 app.use((req, res, next) => {
     res.status(404).json({ message: 'NOT FOUND' });

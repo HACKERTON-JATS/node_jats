@@ -11,7 +11,7 @@ const authController = require('../controller/auth');
 const loginRouter = errorHandler(authController.login);
 const logoutRouter = errorHandler(authController.logout);
 
-router.post('/login', loginRouter);
+router.post('/auth', loginRouter);
 router.get('/logout', verifyToken, checkToken, logoutRouter);
 
 module.exports = router;

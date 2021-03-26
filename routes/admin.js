@@ -13,9 +13,9 @@ const viewCampaignDetail = errorHandler(adminController.viewCampaignDetail);
 const isAccepted = errorHandler(adminController.isAccepted);
 const isRejected = errorHandler(adminController.isRejected);
 
-router.get('/campaign', viewCampaign);
-router.get('/campaign/:id', viewCampaignDetail);
-router.patch('/campaign/accept/:id', isAccepted);
-router.patch('/campaign/reject/:id', isRejected);
+router.get('/campaign', verifyToken, checkToken, viewCampaign);
+router.get('/campaign/:id', verifyToken, checkToken, viewCampaignDetail);
+router.patch('/campaign/accept/:id', verifyToken, checkToken, isAccepted);
+router.patch('/campaign/reject/:id', verifyToken, checkToken, isRejected);
 
 module.exports = router;
