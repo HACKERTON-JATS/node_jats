@@ -17,3 +17,5 @@ router.get('/campaign', viewCampaign);
 router.get('/campaign/:id', viewCampaignDetail);
 router.patch('/campaign/accept/:id', isAccepted);
 router.patch('/campaign/reject/:id', isRejected);
+
+module.exports = router;
