@@ -15,7 +15,7 @@ const viewCampaign = async(req, res) => {
         res.status(200).json(campaigns);
     }
     catch(err) {
-        console.error(err);a
+        console.error(err);
         return error;
     }
 };
