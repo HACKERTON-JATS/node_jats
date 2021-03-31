@@ -11,11 +11,10 @@ const session = require('express-session');
 const nunjucks = require('nunjucks');
 const dotenv = require('dotenv');
 
-dotenv.config();
+dotenv.config();    
 
-const campaignFile = require('./routes/campaignFile');
-const commentFile = require('./routes/commentFile');
 const adminRouter = require('./routes/admin');
+const fileRouter = require('./routes/user');
 
 const app = express();
 
@@ -53,6 +52,8 @@ app.use(session({
 }));
 
 app.use('/admin', adminRouter);
+app.use('/campaign', fileRouter);
+app.use('/comment', fileRouter);
 
 app.use((req, res, next) => {
     res.status(404).json({ message: 'NOT FOUND' });

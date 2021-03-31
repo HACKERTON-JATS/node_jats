@@ -1,6 +1,7 @@
-const { config } = require('dotenv/types');
 const CampaignFile = require('../models/campaignFile');
 const CommentFile = require('../models/commentFile');
+const config = require('../config/multer');
+const multer = require('multer');
 
 const postCampaignFile = async(req, res) => {
     config.upload.array('campaignFile')(req, res, (err) => {
@@ -12,7 +13,7 @@ const postCampaignFile = async(req, res) => {
     })
 };
 
-const postComment = async(req, res) => {
+const postCommentFile = async(req, res) => {
     config.upload.single('commentFile')(req, res, (err) => {
         CommentFile.create({
             path: req.file.filename,
@@ -24,5 +25,5 @@ const postComment = async(req, res) => {
 
 module.exports = {
     postCampaignFile,
-    postComment
+    postCommentFile
 }
