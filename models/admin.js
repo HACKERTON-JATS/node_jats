@@ -6,7 +6,6 @@ module.exports = class Admin extends Sequelize.Model {
             code: {
                 type: Sequelize.STRING(100),
                 allowNull: false,
-                defaultValue: process.env.CODE,
                 primaryKey: true
             },
         }, {
