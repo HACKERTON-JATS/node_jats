@@ -20,7 +20,7 @@ const login = async(req, res) => {
             expiresIn: '2weeks',
             issuer: "JATS",
         });
-        res.json({
+        res.status(201).json({
             code: 201,
             message: "토큰이 발급되었습니다",
             authorization: token
