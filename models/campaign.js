@@ -18,7 +18,7 @@ module.exports = class Campaign extends Sequelize.Model {
                 allowNull: false
             },
             end_at: {
-                type: Sequelize.DATETIME,
+                type: Sequelize.DATE(6),
                 allowNull: false
             },
             is_accepted: {
@@ -30,7 +30,7 @@ module.exports = class Campaign extends Sequelize.Model {
                 allowNull: false
             },
             created_at: {
-                type: Sequelize.DATETIME,
+                type: Sequelize.DATE(6),
                 allowNull: false,
                 defaultValue: Sequelize.NOW
             },

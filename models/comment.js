@@ -10,7 +10,7 @@ module.exports = class Comment extends Sequelize.Model {
                 autoIncrement: true
             },
             created_at: {
-                type: Sequelize.DATETIME,
+                type: Sequelize.DATE(6),
                 allowNull: false,
                 defaultValue: Sequelize.NOW
             },

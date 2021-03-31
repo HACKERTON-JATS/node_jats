@@ -28,7 +28,6 @@ Comment.init(sequelize);
 CommentFile.init(sequelize);
 User.init(sequelize);
 
-Admin.associate(db);
 Campaign.associate(db);
 CampaignFile.associate(db);
 Comment.associate(db);
