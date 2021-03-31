@@ -17,12 +17,9 @@ module.exports = class Comment_File extends Sequelize.Model {
                 type: Sequelize.STRING(40),
                 allowNull: false
             },
-            comment_tbl_id: {
-                type: Sequelize.INTEGER,
-                allowNull: false
-            },
             comment_id: {
-                type: Sequelize.BIGINT
+                type: Sequelize.BIGINT,
+                allowNull: false
             }
         }, {
             sequelize,
