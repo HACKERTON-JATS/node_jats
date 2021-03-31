@@ -10,7 +10,7 @@ const login = async(req, res) => {
         });
         if(!compare) {
             return res.status(401).json({
-                code: 400,
+                code: 401,
                 message: "코드가 일치하지 않습니다",
             });
         }
