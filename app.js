@@ -7,7 +7,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();    
 
-const sequelize = require('./models');
+const { sequelize } = require('./models');
 const adminRouter = require('./routes/admin');
 const fileRouter = require('./routes/user');
 
@@ -29,8 +29,6 @@ sequelize.sync({ force: false })
 
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
-
-app.use(session(sessionOption));
 
 app.use(morgan('dev'));
 app.use(express.json());

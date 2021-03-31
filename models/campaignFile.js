@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-module.exports = class Campaign_File extends Sequelize.Model {
+module.exports = class CampaignFile extends Sequelize.Model {
     static init(sequelize) {
         return super.init({
             id: {
@@ -25,13 +25,13 @@ module.exports = class Campaign_File extends Sequelize.Model {
             sequelize,
             timestamps: false,
             tableName: "campaign_file_tbl",
-            modelName: "Campaign_File",
+            modelName: "CampaignFile",
             charset: "utf8",
             collate: "utf8_general_ci"
         });
     }
 
     static associate(db) {
-        db.Campaign_File.belongsTo(db.Campaign, { foreignKey: "campaign_id", targetKet: "id"});
+        db.CampaignFile.belongsTo(db.Campaign, { foreignKey: "campaign_id", targetKet: "id"});
     }
 }

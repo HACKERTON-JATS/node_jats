@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-module.exports = class Comment_File extends Sequelize.Model {
+module.exports = class CommentFile extends Sequelize.Model {
     static init(sequelize) {
         return super.init({
             id: {
@@ -24,7 +24,7 @@ module.exports = class Comment_File extends Sequelize.Model {
         }, {
             sequelize,
             timestamps: false,
-            modelName: "Comment_File",
+            modelName: "CommentFile",
             tableName: "comment_file_tbl",
             charset: "utf8",
             collate: "utf8_general_ci"
@@ -32,6 +32,6 @@ module.exports = class Comment_File extends Sequelize.Model {
     }
 
     static associate(db) {
-        db.Comment_File.belongsTo(db.Comment_File, { foreignKey: "comment_tbl_id", targetKey: "id"});
+        db.CommentFile.belongsTo(db.CommentFile, { foreignKey: "comment_tbl_id", targetKey: "id"});
     }
 }  
