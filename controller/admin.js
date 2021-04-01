@@ -1,4 +1,5 @@
 const Campaign = require('../models/campaign');
+const CampaignFile = require('../models/campaignFile');
 
 const viewCampaign = async(req, res) => {
     try {
@@ -23,8 +24,12 @@ const viewCampaignDetail = async(req, res) => {
     try {
         const campaign = await Campaign.findOne({
             where: { id: req.params.id }
+        });
+        const campaignFile = await CampaignFile.findAll({
+            where: { campaign_id: req.params.id },
+            attributes: [ 'path' ]
         })
-        res.status(200).json(campaign);
+        res.status(200).json(campaign, campaignFile);
     } catch(error) {
         console.error(error);
         return error;
