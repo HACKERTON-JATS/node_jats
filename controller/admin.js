@@ -62,7 +62,9 @@ const isRejected = async(req, res) => {
         await CampaignFile.destroy({
             where: { id: req.params.id }
         })
-        res.status(200);
+        res.status(200).json({
+            message: "success"
+        });
         res.end();
     } catch(error) {
         console.error(error);

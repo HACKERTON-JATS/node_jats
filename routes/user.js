@@ -10,7 +10,7 @@ const FileController = require('../controller/user');
 const postCampaignFile = errorHandler(FileController.postCampaignFile);
 const postCommentFile = errorHandler(FileController.postCommentFile);
 
-router.post('/', verifyToken, checkToken, postCommentFile);
+router.post('/:id', verifyToken, checkToken, postCommentFile);
 router.post('/file', verifyToken, checkToken, postCampaignFile);
 
 module.exports = router;
