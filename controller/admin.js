@@ -29,7 +29,7 @@ const viewCampaignDetail = async(req, res) => {
             where: { campaign_id: req.params.id },
             attributes: [ 'path' ]
         });
-        res.status(200).json(campaign, campaignFile);
+        res.status(200).json(campaign).end(campaignFile);
     } catch(error) {
         console.error(error);
         return error;
@@ -39,7 +39,7 @@ const viewCampaignDetail = async(req, res) => {
 const isAccepted = async(req, res) => {
     try {
         await Campaign.update({
-            is_accepted: req.body.is_accepted
+            is_accepted: true
         }, {
             where: { id: req.params.id },
         });

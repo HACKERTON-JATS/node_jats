@@ -55,6 +55,6 @@ module.exports = class Campaign extends Sequelize.Model {
     static associate(db) {
         db.Campaign.hasMany(db.CampaignFile, { foreignKey: "campaign_id", sourceKey: "id"});
         db.Campaign.hasMany(db.Comment, { foreignKey: "campaign_id", sourceKey: "id"});
-        db.Campaign.belongsTo(db.User, { foreignKey: "writer", targetKey: "id"});
+        db.Campaign.belongsTo(db.User, { foreignKey: "user_id", targetKey: "id"});
     }
 }
