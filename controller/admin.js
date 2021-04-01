@@ -28,7 +28,7 @@ const viewCampaignDetail = async(req, res) => {
         const campaignFile = await CampaignFile.findAll({
             where: { campaign_id: req.params.id },
             attributes: [ 'path' ]
-        })
+        });
         res.status(200).json(campaign, campaignFile);
     } catch(error) {
         console.error(error);
@@ -59,6 +59,9 @@ const isRejected = async(req, res) => {
         await Campaign.destroy({
             where: { id: req.params.id }
         });
+        await CampaignFile.destroy({
+            where: { id: req.params.id }
+        })
         res.status(200);
         res.end();
     } catch(error) {
