@@ -1,7 +1,6 @@
 const CampaignFile = require('../models/campaignFile');
 const CommentFile = require('../models/commentFile');
 const config = require('../config/multer');
-const multer = require('multer');
 
 const postCampaignFile = async(req, res) => {
     config.upload.array('campaignFile')(req, res, (err) => {

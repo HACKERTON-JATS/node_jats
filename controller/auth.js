@@ -1,16 +1,14 @@
 const jwt = require('jsonwebtoken');
-
 const Admin = require('../models/admin');
 
 const login = async(req, res) => {
-    const codes = req.body.code;
     try {
         const compare = await Admin.findOne({
-            where: { code: codes },
+            where: { code: req.body.code },
         });
         if(!compare) {
-            return res.status(401).json({
-                code: 401,
+            return res.status(400).json({
+                code: 400,
                 message: "코드가 일치하지 않습니다",
             });
         }

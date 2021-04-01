@@ -49,7 +49,8 @@ app.use('/campaign', fileRouter);
 app.use('/comment', fileRouter);
 
 app.use((req, res, next) => {
-    res.status(404).json({ message: 'NOT FOUND' });
+    const err = new Error(`${req.method} ${req.url} 라우터가 없습니다.`);
+    err.status = 404;
     next(err);
 });
 

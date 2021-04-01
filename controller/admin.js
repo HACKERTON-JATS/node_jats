@@ -1,5 +1,4 @@
 const Campaign = require('../models/campaign');
-const CampaignFile = require('../models/campaignFile');
 
 const viewCampaign = async(req, res) => {
     try {
