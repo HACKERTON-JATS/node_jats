@@ -4,15 +4,18 @@ const morgan = require('morgan');
 const cors = require('cors');
 const session = require('express-session');
 const dotenv = require('dotenv');
-
+const multer = require('multer');
+const upload = multer();
 dotenv.config();    
 
 const { sequelize } = require('./models');
 const adminRouter = require('./routes/admin');
-const fileRouter = require('./routes/user');
+const campaignFileRouter = require('./routes/campaignFile');
+const commentFileRouter = require('./routes/commentFile');
 
 const app = express();
 
+process.setMaxListeners(15);
 app.set('port', process.env.PORT || 8080);
 
 sequelize.sync({ force: false })
@@ -27,8 +30,7 @@ sequelize.sync({ force: false })
         app.use(morgan('dev'));
     }
 
-app.use(cors());
-app.use(express.urlencoded({ extended: false }));
+app.use(cors());;
 
 app.use(morgan('dev'));
 app.use(express.json());
@@ -45,8 +47,8 @@ app.use(session({
 }));
 
 app.use('/admin', adminRouter);
-app.use('/campaign', fileRouter);
-app.use('/comment', fileRouter);
+app.use('/campaign', campaignFileRouter);
+app.use('/comment', commentFileRouter);
 
 app.use((req, res, next) => {
     const err = new Error(`${req.method} ${req.url} 라우터가 없습니다.`);

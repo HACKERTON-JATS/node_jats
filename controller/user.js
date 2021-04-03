@@ -2,21 +2,29 @@ const CampaignFile = require('../models/campaignFile');
 const CommentFile = require('../models/commentFile');
 const config = require('../config/multer');
 
-const postCampaignFile = async(req, res) => {
-    config.upload.array('campaignFile')(req, res, (err) => {
+const postCampaignFile = (req, res, err) => {
+    console.log(req.files);
+    if(err) throw err;
+    for(let i = 0; i < req.files.length; i++) {
         CampaignFile.create({
-            path: req.file.filename,
-            report_id: req.params.campaignId 
-        }).then(result => res.json(result))
-        .catch(err => res.json(err));
-    })
+            file_name: req.files[i].originalname,
+            path: req.files[i].location,
+            campaign_id: req.params.id
+        })
+    }
+    
+    res.status(200).json({
+        message: "success"
+    });
 };
 
-const postCommentFile = async(req, res) => {
+const postCommentFile = (req, res) => {
     config.upload.single('commentFile')(req, res, (err) => {
+        console.log(req.file);
         CommentFile.create({
-            path: req.file.filename,
-            comment_id: req.params.campaignId
+            file_name: req.file.originalname,
+            path: req.file.location,
+            comment_id: req.params.id
         }).then(result => res.json(result))
         .catch(err => res.json(err));
     })
