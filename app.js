@@ -16,7 +16,7 @@ const commentFileRouter = require('./routes/commentFile');
 const app = express();
 
 process.setMaxListeners(15);
-app.set('port', process.env.PORT || 8080);
+app.set('port', process.env.PORT || 8010);
 
 sequelize.sync({ force: false })
     .then(() => console.log('데이터 베이스 연결 성공'))
